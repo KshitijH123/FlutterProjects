@@ -11,7 +11,7 @@ class HomeScreen extends StatefulWidget {
 class _HomeScreenState extends State<HomeScreen> {
   TextEditingController nameController = TextEditingController();
 
-  static const String KEYNAME = "name";
+  static const String keyName = "name";
 
   var nameValue = "No Value Saved";
 
@@ -40,6 +40,7 @@ class _HomeScreenState extends State<HomeScreen> {
             TextField(
               controller: nameController,
               decoration: InputDecoration(
+                hintText: 'Name',
                 border: OutlineInputBorder(
                   borderRadius: BorderRadius.circular(16),
                 ),
@@ -49,12 +50,12 @@ class _HomeScreenState extends State<HomeScreen> {
             ElevatedButton(
               onPressed: () async {
                 var prefs = await SharedPreferences.getInstance();
-                prefs.setString(KEYNAME, nameController.text.toString());
+                prefs.setString(keyName, nameController.text.toString());
               },
               child: Text('Save'),
             ),
             SizedBox(height: 16),
-            Text(nameValue),
+            Text(nameValue,style: TextStyle(fontSize: 18,fontWeight: FontWeight.w500),),
           ],
         ),
       ),
@@ -64,12 +65,10 @@ class _HomeScreenState extends State<HomeScreen> {
   void getValue() async {
     var prefs = await SharedPreferences.getInstance();
 
-    var getName = prefs.getString(KEYNAME);
+    var getName = prefs.getString(keyName);
 
     nameValue = getName ?? "No Value Saved ";
 
-    setState(() {
-       
-    });
+    setState(() {});
   }
 }
