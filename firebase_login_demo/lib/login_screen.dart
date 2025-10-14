@@ -1,5 +1,3 @@
-import 'package:firebase_auth/firebase_auth.dart';
-import 'package:firebase_login_demo/home_screen.dart';
 import 'package:firebase_login_demo/register_screen.dart';
 import 'package:flutter/material.dart';
 
@@ -14,62 +12,73 @@ class _LoginScreenState extends State<LoginScreen> {
   final emailController = TextEditingController();
   final passwordController = TextEditingController();
 
-  void login() async {
-    final email = emailController.text.trim();
-    final password = passwordController.text.trim();
-
-    final user = await FirebaseAuth.instance.signInWithEmailAndPassword(
-      email: email,
-      password: password,
-    );
-
-    if (user.user != null) {
-      Navigator.of(
-        context,
-      ).push(MaterialPageRoute(builder: (context) => HomeScreen()));
-    } else {
-      ScaffoldMessenger.of(
-        context,
-      ).showSnackBar(SnackBar(content: Text('Login failed')));
-    }
-  }
-
-  void navigateToRegisterScreen() {
-    Navigator.of(
-      context,
-    ).push(MaterialPageRoute(builder: (context) => RegisterScreen()));
-  }
+  void login() {}
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text('Login')),
-      body: Padding(
-        padding: const EdgeInsets.all(24.0),
-        child: Column(
-          spacing: 24,
-          children: [
-            TextField(
+      appBar: AppBar(
+        backgroundColor: Colors.blue[300],
+        title: Text(
+          'Login Screen',
+          style: TextStyle(fontSize: 24, fontWeight: FontWeight.w500),
+        ),
+        centerTitle: true,
+      ),
+      body: Column(
+        children: [
+          SizedBox(height: 24),
+          Padding(
+            padding: const EdgeInsets.all(12.0),
+            child: TextField(
               controller: emailController,
               decoration: InputDecoration(
-                hint: Text('Email'),
-                border: OutlineInputBorder(),
+                hintText: 'Email',
+                border: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(16),
+                ),
               ),
             ),
-            TextField(
+          ),
+          Padding(
+            padding: const EdgeInsets.all(12.0),
+            child: TextField(
               controller: passwordController,
               decoration: InputDecoration(
-                hint: Text('Password'),
-                border: OutlineInputBorder(),
+                hintText: 'Password',
+                border: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(16),
+                ),
               ),
             ),
-            ElevatedButton(onPressed: login, child: Text('Login')),
-            TextButton(
-              onPressed: navigateToRegisterScreen,
-              child: Text('Register User'),
+          ),
+          SizedBox(height: 8),
+          ElevatedButton(
+            onPressed: login,
+            style: ElevatedButton.styleFrom(
+              backgroundColor: Colors.blue[300],
+              foregroundColor: Colors.white,
+              minimumSize: Size(250, 50),
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(16),
+              ),
             ),
-          ],
-        ),
+            child: Text('Login', style: TextStyle(fontSize: 18)),
+          ),
+          SizedBox(height: 8),
+          TextButton(
+            onPressed: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => RegisterUserScreen()),
+              );
+            },
+            child: Text(
+              'Register User',
+              style: TextStyle(color: Colors.blue[300]),
+            ),
+          ),
+        ],
       ),
     );
   }

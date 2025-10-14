@@ -8,6 +8,9 @@ class RegisterUserScreen extends StatefulWidget {
 }
 
 class _RegisterUserScreenState extends State<RegisterUserScreen> {
+  final emailController = TextEditingController();
+  final passwordController = TextEditingController();
+  final confiormPasswordController = TextEditingController();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -26,6 +29,7 @@ class _RegisterUserScreenState extends State<RegisterUserScreen> {
           Padding(
             padding: const EdgeInsets.all(12.0),
             child: TextField(
+              controller: emailController,
               decoration: InputDecoration(
                 hintText: 'Email',
                 border: OutlineInputBorder(
@@ -37,6 +41,7 @@ class _RegisterUserScreenState extends State<RegisterUserScreen> {
           Padding(
             padding: const EdgeInsets.all(12.0),
             child: TextField(
+              controller: passwordController,
               decoration: InputDecoration(
                 hintText: 'password',
                 border: OutlineInputBorder(
@@ -48,6 +53,7 @@ class _RegisterUserScreenState extends State<RegisterUserScreen> {
           Padding(
             padding: const EdgeInsets.all(12.0),
             child: TextField(
+              controller: confiormPasswordController,
               decoration: InputDecoration(
                 hintText: 'Confirm password',
                 border: OutlineInputBorder(
@@ -67,7 +73,7 @@ class _RegisterUserScreenState extends State<RegisterUserScreen> {
               ),
             ),
             onPressed: () {},
-            child: Text('Register User',style: TextStyle(fontSize: 18),),
+            child: Text('Register User', style: TextStyle(fontSize: 18)),
           ),
         ],
       ),

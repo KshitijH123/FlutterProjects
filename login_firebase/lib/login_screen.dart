@@ -12,7 +12,10 @@ class _LoginScreenState extends State<LoginScreen> {
   final emailController = TextEditingController();
   final passwordController = TextEditingController();
 
-  void login() {}
+  void login() {
+    final email = emailController.text.trim();
+    final password = passwordController.text.trim();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -53,16 +56,18 @@ class _LoginScreenState extends State<LoginScreen> {
             ),
           ),
           SizedBox(height: 8),
-          ElevatedButton(onPressed: login, 
-          style: ElevatedButton.styleFrom(
-            backgroundColor: Colors.blue[300],
-            foregroundColor: Colors.white,
-            minimumSize: Size(250, 50),
-            shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(16)
-            )
-          )
-          ,child: Text('Login',style: TextStyle(fontSize: 18),)),
+          ElevatedButton(
+            onPressed: login,
+            style: ElevatedButton.styleFrom(
+              backgroundColor: Colors.blue[300],
+              foregroundColor: Colors.white,
+              minimumSize: Size(250, 50),
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(16),
+              ),
+            ),
+            child: Text('Login', style: TextStyle(fontSize: 18)),
+          ),
           SizedBox(height: 8),
           TextButton(
             onPressed: () {
@@ -71,7 +76,10 @@ class _LoginScreenState extends State<LoginScreen> {
                 MaterialPageRoute(builder: (context) => RegisterUserScreen()),
               );
             },
-            child: Text('Register User',style: TextStyle(color: Colors.blue[300])),
+            child: Text(
+              'Register User',
+              style: TextStyle(color: Colors.blue[300]),
+            ),
           ),
         ],
       ),
