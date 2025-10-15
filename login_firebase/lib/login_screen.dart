@@ -1,4 +1,6 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:login_firebase/home_sreen.dart';
 import 'package:login_firebase/register_user_screen.dart';
 
 class LoginScreen extends StatefulWidget {
@@ -12,9 +14,50 @@ class _LoginScreenState extends State<LoginScreen> {
   final emailController = TextEditingController();
   final passwordController = TextEditingController();
 
-  void login() {
+  void showSnackBar(String message) {
+    ScaffoldMessenger.of(
+      context,
+    ).showSnackBar(SnackBar(content: Text(message)));
+  }
+
+  void login() async {
     final email = emailController.text.trim();
     final password = passwordController.text.trim();
+
+    if (email.isEmpty) {
+      showSnackBar('Please enter email');
+      return;
+    }
+    if (password.isEmpty) {
+      showSnackBar('Please enter password');
+      return;
+    }
+
+    try {
+      final userCredential = await FirebaseAuth.instance
+          .signInWithEmailAndPassword(email: email, password: password);
+
+      if (userCredential.user != null) {
+        Navigator.pushReplacement(
+          context,
+          MaterialPageRoute(builder: (context) => HomeSreen()),
+        );
+      }
+    } on FirebaseAuthException catch (e) {
+      if (e.code == 'user-not-found') {
+        showSnackBar('No user found with this email');
+      } else if (e.code == 'wrong-password') {
+        showSnackBar('Wrong password provided');
+      } else if (e.code == 'invalid-email') {
+        showSnackBar('Invalid email format');
+      } else if (e.code == 'user-disabled') {
+        showSnackBar('This user account has been disabled');
+      } else {
+        showSnackBar('Login failed: ${e.message}');
+      }
+    } catch (e) {
+      showSnackBar('An error occurred: $e');
+    }
   }
 
   @override
@@ -35,6 +78,7 @@ class _LoginScreenState extends State<LoginScreen> {
             padding: const EdgeInsets.all(12.0),
             child: TextField(
               controller: emailController,
+              keyboardType: TextInputType.emailAddress,
               decoration: InputDecoration(
                 hintText: 'Email',
                 border: OutlineInputBorder(
@@ -47,6 +91,7 @@ class _LoginScreenState extends State<LoginScreen> {
             padding: const EdgeInsets.all(12.0),
             child: TextField(
               controller: passwordController,
+              obscureText: true,
               decoration: InputDecoration(
                 hintText: 'Password',
                 border: OutlineInputBorder(

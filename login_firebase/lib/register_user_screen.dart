@@ -1,3 +1,4 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
 class RegisterUserScreen extends StatefulWidget {
@@ -10,7 +11,63 @@ class RegisterUserScreen extends StatefulWidget {
 class _RegisterUserScreenState extends State<RegisterUserScreen> {
   final emailController = TextEditingController();
   final passwordController = TextEditingController();
-  final confiormPasswordController = TextEditingController();
+  final confirmPasswordController = TextEditingController();
+
+  void showSnackBar(String message) {
+    ScaffoldMessenger.of(
+      context,
+    ).showSnackBar(SnackBar(content: Text(message)));
+  }
+
+  void register() async {
+    final email = emailController.text.trim();
+    final password = passwordController.text.trim();
+    final confirmPassword = confirmPasswordController.text.trim();
+
+    if (email.isEmpty) {
+      showSnackBar('Please enter email address');
+      return;
+    }
+    if (password.isEmpty) {
+      showSnackBar('Please enter password');
+      return;
+    }
+    if (confirmPassword.isEmpty) {
+      showSnackBar('Please confirm your password');
+      return;
+    }
+    if (password != confirmPassword) {
+      showSnackBar('Passwords do not match');
+      return;
+    }
+
+    try {
+      await FirebaseAuth.instance.createUserWithEmailAndPassword(
+        email: email,
+        password: password,
+      );
+
+      showSnackBar('Registration successful!');
+
+      // Navigate back to login screen after successful registration
+      Future.delayed(Duration(seconds: 1), () {
+        Navigator.pop(context);
+      });
+    } on FirebaseAuthException catch (e) {
+      if (e.code == 'weak-password') {
+        showSnackBar('Password is too weak. Use at least 6 characters');
+      } else if (e.code == 'email-already-in-use') {
+        showSnackBar('An account already exists with this email');
+      } else if (e.code == 'invalid-email') {
+        showSnackBar('Invalid email format');
+      } else {
+        showSnackBar('Registration failed: ${e.message}');
+      }
+    } catch (e) {
+      showSnackBar('An error occurred: $e');
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -30,6 +87,7 @@ class _RegisterUserScreenState extends State<RegisterUserScreen> {
             padding: const EdgeInsets.all(12.0),
             child: TextField(
               controller: emailController,
+              keyboardType: TextInputType.emailAddress,
               decoration: InputDecoration(
                 hintText: 'Email',
                 border: OutlineInputBorder(
@@ -42,8 +100,9 @@ class _RegisterUserScreenState extends State<RegisterUserScreen> {
             padding: const EdgeInsets.all(12.0),
             child: TextField(
               controller: passwordController,
+              obscureText: true,
               decoration: InputDecoration(
-                hintText: 'password',
+                hintText: 'Password',
                 border: OutlineInputBorder(
                   borderRadius: BorderRadius.circular(16),
                 ),
@@ -53,9 +112,10 @@ class _RegisterUserScreenState extends State<RegisterUserScreen> {
           Padding(
             padding: const EdgeInsets.all(12.0),
             child: TextField(
-              controller: confiormPasswordController,
+              controller: confirmPasswordController,
+              obscureText: true,
               decoration: InputDecoration(
-                hintText: 'Confirm password',
+                hintText: 'Confirm Password',
                 border: OutlineInputBorder(
                   borderRadius: BorderRadius.circular(16),
                 ),
@@ -72,7 +132,7 @@ class _RegisterUserScreenState extends State<RegisterUserScreen> {
                 borderRadius: BorderRadius.circular(16),
               ),
             ),
-            onPressed: () {},
+            onPressed: register,
             child: Text('Register User', style: TextStyle(fontSize: 18)),
           ),
         ],
