@@ -16,16 +16,23 @@ class _AddTodoScreenState extends State<AddTodoScreen> {
     final title = titleController.text.trim();
     final discription = discriptionController.text.trim();
 
-    if (title.isEmpty && discription.isEmpty) {
+    if (title.isEmpty || discription.isEmpty) {
       ScaffoldMessenger.of(
         context,
       ).showSnackBar(SnackBar(content: Text('please fill all the fields')));
       return;
     }
 
-    TodoModel todoModel = TodoModel(title: title, discription: discription);
+    final todoModel = TodoModel(title: title, discription: discription, id: '');
 
     Navigator.pop(context, todoModel);
+  }
+
+  @override
+  void dispose() {
+    titleController.dispose();
+    discriptionController.dispose();
+    super.dispose();
   }
 
   @override
