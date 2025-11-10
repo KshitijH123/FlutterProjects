@@ -16,7 +16,12 @@ class _AddItemState extends State<AddItem> {
     final itemName = itemNameController.text.trim();
     final discription = discriptionController.text.trim();
 
-    if (itemName.isEmpty && discription.isEmpty) {
+    if (itemName.isEmpty) {
+      ScaffoldMessenger.of(
+        context,
+      ).showSnackBar(SnackBar(content: Text('Please Fill All The Field')));
+      return;
+    }else if (discription.isEmpty){
       ScaffoldMessenger.of(
         context,
       ).showSnackBar(SnackBar(content: Text('Please Fill All The Field')));
@@ -34,25 +39,55 @@ class _AddItemState extends State<AddItem> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text('Add Item'), centerTitle: true, elevation: 2),
+      appBar: AppBar(
+        title: Text(
+          'Add Item',
+          style: TextStyle(fontSize: 30, fontWeight: FontWeight.w500),
+        ),
+        centerTitle: true,
+        backgroundColor: Colors.blue[400],
+        foregroundColor: Colors.white,
+      ),
       body: Column(
-        spacing: 24,
         children: [
-          TextField(
-            controller: itemNameController,
-            decoration: InputDecoration(
-              labelText: 'Item Name',
-              border: OutlineInputBorder(),
+          SizedBox(height: 24),
+          Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: TextField(
+              controller: itemNameController,
+              decoration: InputDecoration(
+                labelText: 'Item Name',
+                border: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(16),
+                ),
+              ),
             ),
           ),
-          TextField(
-            controller: discriptionController,
-            decoration: InputDecoration(
-              labelText: 'Discription',
-              border: OutlineInputBorder(),
+          Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: TextField(
+              controller: discriptionController,
+              decoration: InputDecoration(
+                labelText: 'Discription',
+                border: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(16),
+                ),
+              ),
             ),
           ),
-          ElevatedButton(onPressed: saveItem, child: Text('Add Item')),
+          SizedBox(height: 24),
+          ElevatedButton(
+            style: ElevatedButton.styleFrom(
+              backgroundColor: Colors.blue,
+              foregroundColor: Colors.white,
+              minimumSize: Size(250, 50),
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(16),
+              ),
+            ),
+            onPressed: saveItem,
+            child: Text('Add Item',style: TextStyle(fontSize: 18),),
+          ),
         ],
       ),
     );

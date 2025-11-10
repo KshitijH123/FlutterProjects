@@ -32,7 +32,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 setState(() {});
                 Navigator.pop(context);
               },
-              child: const Text('Delete'),
+              child: const Text('Delete', style: TextStyle(color: Colors.red)),
             ),
           ],
         );
@@ -43,7 +43,15 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: const Text('Todo List'),centerTitle: true,elevation: 2,),
+      appBar: AppBar(
+        title: const Text(
+          'Tasks',
+          style: TextStyle(fontSize: 30, fontWeight: FontWeight.w500),
+        ),
+        centerTitle: true,
+        backgroundColor: Colors.blue[400],
+        foregroundColor: Colors.white,
+      ),
       body: Column(
         children: [
           Expanded(
@@ -51,15 +59,26 @@ class _HomeScreenState extends State<HomeScreen> {
               itemBuilder: (context, index) {
                 final item = todoItems[index];
 
-                return Card(
-                  child: ListTile(
-                    title: Text(item.title),
-                    subtitle: Text(item.discription),
-                    trailing: InkWell(
-                      onTap: () {
-                        deleteTodoItem(index);
-                      },
-                      child: Icon(Icons.delete),
+                return Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 8),
+                  child: Card(
+                    child: ListTile(
+                      title: Text(
+                        item.title,
+                        style: TextStyle(
+                          fontSize: 18,
+                          fontWeight: FontWeight.w500,
+                        ),
+                      ),
+                      subtitle: Text(item.discription),
+                      trailing: InkWell(
+                        onTap: () {
+                          deleteTodoItem(index);
+                        },
+                        
+                        child: Icon(Icons.delete, color: Colors.red[400]),
+                        
+                      ),
                     ),
                   ),
                 );
@@ -71,6 +90,8 @@ class _HomeScreenState extends State<HomeScreen> {
       ),
 
       floatingActionButton: FloatingActionButton(
+        backgroundColor: Colors.blue,
+        foregroundColor: Colors.white,
         onPressed: () async {
           final item = await Navigator.push(
             context,
@@ -85,3 +106,4 @@ class _HomeScreenState extends State<HomeScreen> {
     );
   }
 }
+
