@@ -21,9 +21,7 @@ class _HomeScreenState extends State<HomeScreen> {
           content: const Text('Are you sure you want to delete this item?'),
           actions: [
             TextButton(
-              onPressed: () {
-                Navigator.pop(context);
-              },
+              onPressed: () => Navigator.pop(context),
               child: const Text('Cancel'),
             ),
             TextButton(
@@ -38,6 +36,20 @@ class _HomeScreenState extends State<HomeScreen> {
         );
       },
     );
+  }
+
+  Future<void> editTodoItem(int index) async {
+    final editedItem = await Navigator.push(
+      context,
+      MaterialPageRoute(
+        builder: (context) => AddItem(existingItem: todoItems[index]),
+      ),
+    );
+
+    if (editedItem != null && editedItem is TodoItemModel) {
+      todoItems[index] = editedItem;
+      setState(() {});
+    }
   }
 
   @override
@@ -56,54 +68,53 @@ class _HomeScreenState extends State<HomeScreen> {
         children: [
           Expanded(
             child: ListView.builder(
+              itemCount: todoItems.length,
               itemBuilder: (context, index) {
                 final item = todoItems[index];
-
                 return Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 8),
+                  padding: const EdgeInsets.symmetric(
+                    horizontal: 8,
+                    vertical: 4,
+                  ),
                   child: Card(
                     child: ListTile(
                       title: Text(
                         item.title,
-                        style: TextStyle(
+                        style: const TextStyle(
                           fontSize: 18,
                           fontWeight: FontWeight.w500,
                         ),
                       ),
                       subtitle: Text(item.discription),
                       trailing: InkWell(
-                        onTap: () {
-                          deleteTodoItem(index);
-                        },
-                        
+                        onTap: () => deleteTodoItem(index),
                         child: Icon(Icons.delete, color: Colors.red[400]),
-                        
                       ),
+                      onTap: () => editTodoItem(index), 
                     ),
                   ),
                 );
               },
-              itemCount: todoItems.length,
             ),
           ),
         ],
       ),
-
       floatingActionButton: FloatingActionButton(
         backgroundColor: Colors.blue,
         foregroundColor: Colors.white,
         onPressed: () async {
-          final item = await Navigator.push(
+          final newItem = await Navigator.push(
             context,
             MaterialPageRoute(builder: (context) => const AddItem()),
           );
 
-          todoItems.add(item);
-          setState(() {});
+          if (newItem != null && newItem is TodoItemModel) {
+            todoItems.add(newItem);
+            setState(() {});
+          }
         },
         child: const Icon(Icons.add),
       ),
     );
   }
 }
-

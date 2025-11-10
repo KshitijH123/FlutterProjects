@@ -2,7 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:todo_list_firebase/model/todo_item_model.dart';
 
 class AddItem extends StatefulWidget {
-  const AddItem({super.key});
+  final TodoItemModel? existingItem; 
+
+  const AddItem({super.key, this.existingItem});
 
   @override
   State<AddItem> createState() => _AddItemState();
@@ -12,19 +14,23 @@ class _AddItemState extends State<AddItem> {
   final itemNameController = TextEditingController();
   final discriptionController = TextEditingController();
 
+  @override
+  void initState() {
+    super.initState();
+    if (widget.existingItem != null) {
+      itemNameController.text = widget.existingItem!.title;
+      discriptionController.text = widget.existingItem!.discription;
+    }
+  }
+
   void saveItem() {
     final itemName = itemNameController.text.trim();
     final discription = discriptionController.text.trim();
 
-    if (itemName.isEmpty) {
-      ScaffoldMessenger.of(
-        context,
-      ).showSnackBar(SnackBar(content: Text('Please Fill All The Field')));
-      return;
-    }else if (discription.isEmpty){
-      ScaffoldMessenger.of(
-        context,
-      ).showSnackBar(SnackBar(content: Text('Please Fill All The Field')));
+    if (itemName.isEmpty || discription.isEmpty) {
+      ScaffoldMessenger.of(context).showSnackBar(
+        const SnackBar(content: Text('Please fill all the fields')),
+      );
       return;
     }
 
@@ -38,11 +44,13 @@ class _AddItemState extends State<AddItem> {
 
   @override
   Widget build(BuildContext context) {
+    final isEditing = widget.existingItem != null;
+
     return Scaffold(
       appBar: AppBar(
         title: Text(
-          'Add Item',
-          style: TextStyle(fontSize: 30, fontWeight: FontWeight.w500),
+          isEditing ? 'Edit Item' : 'Add Item',
+          style: const TextStyle(fontSize: 30, fontWeight: FontWeight.w500),
         ),
         centerTitle: true,
         backgroundColor: Colors.blue[400],
@@ -50,7 +58,7 @@ class _AddItemState extends State<AddItem> {
       ),
       body: Column(
         children: [
-          SizedBox(height: 24),
+          const SizedBox(height: 24),
           Padding(
             padding: const EdgeInsets.all(8.0),
             child: TextField(
@@ -68,25 +76,28 @@ class _AddItemState extends State<AddItem> {
             child: TextField(
               controller: discriptionController,
               decoration: InputDecoration(
-                labelText: 'Discription',
+                labelText: 'Description',
                 border: OutlineInputBorder(
                   borderRadius: BorderRadius.circular(16),
                 ),
               ),
             ),
           ),
-          SizedBox(height: 24),
+          const SizedBox(height: 24),
           ElevatedButton(
             style: ElevatedButton.styleFrom(
               backgroundColor: Colors.blue,
               foregroundColor: Colors.white,
-              minimumSize: Size(250, 50),
+              minimumSize: const Size(250, 50),
               shape: RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular(16),
               ),
             ),
             onPressed: saveItem,
-            child: Text('Add Item',style: TextStyle(fontSize: 18),),
+            child: Text(
+              isEditing ? 'Save Changes' : 'Add Item',
+              style: const TextStyle(fontSize: 18),
+            ),
           ),
         ],
       ),
