@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:shared_pref_example/home_screen.dart';
+import 'package:shared_pref_example/service/local_storage.dart';
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});
@@ -11,19 +12,6 @@ class LoginScreen extends StatefulWidget {
 class _LoginScreenState extends State<LoginScreen> {
   TextEditingController nameController = TextEditingController();
   TextEditingController passwordController = TextEditingController();
-
-  void login() {
-    final name = nameController.text.trim();
-    final passWord = passwordController.text.trim();
-
-    if (name.isEmpty || passWord.isEmpty) {
-      ScaffoldMessenger.of(
-        context,
-      ).showSnackBar(SnackBar(content: Text('Field is Empty !')));
-    }else{
-      Navigator.push(context, MaterialPageRoute(builder: (context)=> HomeScreen(name:name)));
-    }
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -73,7 +61,22 @@ class _LoginScreenState extends State<LoginScreen> {
                 borderRadius: BorderRadiusGeometry.circular(12),
               ),
             ),
-            onPressed: login,
+           onPressed: () {
+              final username = nameController.text.trim();
+              final password = passwordController.text.trim();
+
+              if (username.isEmpty || password.isEmpty) {
+                ScaffoldMessenger.of(context).showSnackBar(
+                  SnackBar(content: Text('Input Username and Password')),
+                );
+              } else {
+                LocalStorage.instance.login(username);
+                Navigator.pushReplacement(
+                  context,
+                  MaterialPageRoute(builder: (context) => HomeScreen()),
+                );
+              }
+            },
             child: Text('Login', style: TextStyle(fontSize: 18)),
           ),
         ],
