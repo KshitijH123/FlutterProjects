@@ -1,3 +1,4 @@
+import 'package:comment_api_demo/comment_detail_screen.dart';
 import 'package:comment_api_demo/model/comment_model.dart';
 import 'package:comment_api_demo/service/comment_service.dart';
 import 'package:flutter/material.dart';
@@ -23,7 +24,7 @@ class _HomeScreenState extends State<HomeScreen> {
     return Scaffold(
       appBar: AppBar(
         title: const Text(
-          'Home',
+          'Comments',
           style: TextStyle(fontSize: 24, fontWeight: FontWeight.w500),
         ),
         centerTitle: true,
@@ -48,16 +49,34 @@ class _HomeScreenState extends State<HomeScreen> {
               return Card(
                 margin: const EdgeInsets.symmetric(horizontal: 10, vertical: 6),
                 child: ListTile(
+                  onTap: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) =>
+                            CommentDetailScreen(comment: comment),
+                      ),
+                    );
+                  },
                   title: Text(
                     '‣ ${comment.name ?? ''}',
-                    style: const TextStyle(fontSize: 18,fontWeight: FontWeight.bold),
+                    style: const TextStyle(
+                      fontSize: 18,
+                      fontWeight: FontWeight.bold,
+                    ),
                   ),
                   subtitle: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Text('~ ${comment.email ?? ''}',style:TextStyle(fontSize: 14,fontWeight: FontWeight.w600) ,),
+                      Text(
+                        '~ ${comment.email ?? ''}',
+                        style: TextStyle(
+                          fontSize: 14,
+                          fontWeight: FontWeight.w600,
+                        ),
+                      ),
                       const SizedBox(height: 4),
-                      Text(comment.body ?? '', style: TextStyle(fontSize: 10),)
+                      Text('Tap to read comment', style: TextStyle(fontSize: 12)),
                     ],
                   ),
                 ),
