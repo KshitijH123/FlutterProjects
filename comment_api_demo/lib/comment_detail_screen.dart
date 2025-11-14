@@ -27,7 +27,7 @@ class CommentDetailScreen extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
-                  comment.name ?? 'No Name',
+                  '‣ ${comment.name }?? No Name',
                   style: const TextStyle(
                     fontSize: 20,
                     fontWeight: FontWeight.bold,
@@ -35,10 +35,10 @@ class CommentDetailScreen extends StatelessWidget {
                 ),
                 const SizedBox(height: 8),
                 Text(
-                  'Email: ${comment.email ?? 'N/A'}',
+                  'Email : ${comment.email ?? 'N/A'}',
                   style: const TextStyle(fontSize: 14, color: Colors.grey),
                 ),
-                const Divider(height: 20, thickness: 1),
+                const Divider(height: 30, thickness: 1),
                 Text(
                   comment.body ?? 'No comment body',
                   style: const TextStyle(fontSize: 16),

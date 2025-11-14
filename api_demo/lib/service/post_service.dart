@@ -9,8 +9,15 @@ class PostService {
   static const String baseUrl = 'https://jsonplaceholder.typicode.com/posts';
 
   Future<List<PostModel>> fetchPost() async {
-    final response = await http.get(Uri.parse(baseUrl));
-
+    final response = await http
+        .get(
+          Uri.parse(baseUrl),
+          headers: {
+            'Content-Type': 'application/json',
+            'Accept': 'application/json',
+          },
+        )
+        .timeout(const Duration(seconds: 10));
     if (response.statusCode == 200) {
       final List<dynamic> jsonData = jsonDecode(response.body);
       return jsonData.map((json) => PostModel.fromJson(json)).toList();
