@@ -1,5 +1,6 @@
 import 'package:firebase_login/home_screen.dart';
 import 'package:firebase_login/register_user_screen.dart';
+import 'package:firebase_login/service/firebase_auth_service.dart';
 import 'package:flutter/material.dart';
 
 class LoginScreen extends StatefulWidget {
@@ -10,17 +11,31 @@ class LoginScreen extends StatefulWidget {
 }
 
 class _LoginScreenState extends State<LoginScreen> {
-  final nameController = TextEditingController();
+  final emailController = TextEditingController();
   final passwordController = TextEditingController();
+  final nameController = TextEditingController();
 
-  void login() {
+  void login() async {
     final name = nameController.text.trim();
+    final email = emailController.text.trim();
     final password = passwordController.text.trim();
 
-    if (name.isEmpty || password.isEmpty) {
+    if (name.isEmpty || email.isEmpty || password.isEmpty) {
       ScaffoldMessenger.of(
         context,
-      ).showSnackBar(SnackBar(content: Text('Text field is empty')));
+      ).showSnackBar(SnackBar(content: Text('Fields cannot be empty')));
+    }
+
+    final result = await FirebaseAuthService.instance.loginUser(
+      email: email,
+      password: password,
+      name: name,
+    );
+
+    if (result != null) {
+      ScaffoldMessenger.of(
+        context,
+      ).showSnackBar(SnackBar(content: Text(result)));
     } else {
       Navigator.push(
         context,
@@ -50,6 +65,18 @@ class _LoginScreenState extends State<LoginScreen> {
                   borderRadius: BorderRadius.circular(16),
                 ),
                 labelText: 'Name',
+              ),
+            ),
+          ),
+          Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: TextField(
+              controller: emailController,
+              decoration: InputDecoration(
+                border: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(16),
+                ),
+                labelText: 'email',
               ),
             ),
           ),
