@@ -24,6 +24,7 @@ class _LoginScreenState extends State<LoginScreen> {
       ScaffoldMessenger.of(
         context,
       ).showSnackBar(SnackBar(content: Text('Fields cannot be empty')));
+      return;
     }
 
     final result = await FirebaseAuthService.instance.loginUser(
@@ -37,9 +38,12 @@ class _LoginScreenState extends State<LoginScreen> {
         context,
       ).showSnackBar(SnackBar(content: Text(result)));
     } else {
-      Navigator.push(
+      
+      Navigator.pushReplacement(
         context,
-        MaterialPageRoute(builder: (context) => HomeScreen(name: name)),
+        MaterialPageRoute(
+          builder: (context) => HomeScreen(name: name, email: email),
+        ),
       );
     }
   }
