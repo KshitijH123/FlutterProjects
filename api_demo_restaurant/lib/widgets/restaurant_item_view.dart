@@ -46,7 +46,7 @@ class RestaurantItemView extends StatelessWidget {
                       ),
                       const SizedBox(height: 6),
                       Text(
-                        ' ${restaurant.distance ?? '2.0'} km away',
+                        ' ${restaurant.distance ?? '2.0'} away',
                         style: TextStyle(fontSize: 14, color: Colors.black),
                       ),
                       Text(
