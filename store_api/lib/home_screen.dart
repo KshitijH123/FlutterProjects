@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:store_pai/model/store_model.dart';
+import 'package:store_pai/product_detail_screen.dart';
 import 'package:store_pai/service/store_service.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -47,21 +48,41 @@ class _HomeScreenState extends State<HomeScreen> {
               final store = stores[index];
 
               return Card(
-                margin: const EdgeInsets.symmetric(horizontal: 6,vertical: 6),              
+                margin: const EdgeInsets.symmetric(horizontal: 6, vertical: 4),
                 child: ListTile(
+                  onTap: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) =>
+                            ProductDetailScreen(product: store),
+                      ),
+                    );
+                  },
                   leading: Image.network(
                     store.image ?? '',
                     height: 50,
                     width: 50,
                   ),
-                  title: Text(store.category ?? '',
-                    style: TextStyle(fontSize: 16),
+                  title: Text(
+                    store.category ?? '',
+                    style: TextStyle(fontSize: 18, fontWeight: FontWeight.w600),
                   ),
-                  subtitle: Text('₹ ${store.price}',style: TextStyle(fontSize: 14,color: Colors.grey[600]),),
+                  subtitle: Text(
+                    '₹ ${store.price}',
+                    style: TextStyle(
+                      fontSize: 14,
+                      fontWeight: FontWeight.w500,
+                      color: Colors.grey[600],
+                    ),
+                  ),
                   trailing: Column(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      Text('⭐ ${store.rating?.rate ?? 0}', style: TextStyle(fontSize: 16),),
+                      Text(
+                        '⭐ ${store.rating?.rate ?? 0}',
+                        style: TextStyle(fontSize: 16),
+                      ),
                     ],
                   ),
                 ),
