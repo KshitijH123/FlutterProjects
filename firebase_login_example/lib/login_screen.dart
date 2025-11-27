@@ -1,6 +1,7 @@
 import 'package:firebase_login_example/home_screen.dart';
 import 'package:firebase_login_example/register_user_screen.dart';
 import 'package:firebase_login_example/services/firebase_auth_services.dart';
+import 'package:firebase_login_example/services/local_storage.dart';
 import 'package:flutter/material.dart';
 
 class LoginScreen extends StatefulWidget {
@@ -37,7 +38,8 @@ class _LoginScreenState extends State<LoginScreen> {
         context,
       ).showSnackBar(SnackBar(content: Text(result)));
     } else {
-      Navigator.push(
+      LocalStorage.instance.login(name,email);
+      Navigator.pushReplacement(
         context,
         MaterialPageRoute(
           builder: (context) => HomeScreen(name: name, email: email),
