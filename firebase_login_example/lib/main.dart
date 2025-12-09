@@ -1,6 +1,6 @@
 import 'package:firebase_core/firebase_core.dart';
-import 'package:firebase_login_example/home_screen.dart';
-import 'package:firebase_login_example/login_screen.dart';
+import 'package:firebase_login_example/screens/home_screen.dart';
+import 'package:firebase_login_example/screens/login_screen.dart';
 import 'package:firebase_login_example/services/local_storage.dart';
 import 'package:flutter/material.dart';
 

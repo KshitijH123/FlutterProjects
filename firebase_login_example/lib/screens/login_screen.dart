@@ -1,5 +1,5 @@
-import 'package:firebase_login_example/home_screen.dart';
-import 'package:firebase_login_example/register_user_screen.dart';
+import 'package:firebase_login_example/screens/home_screen.dart';
+import 'package:firebase_login_example/screens/register_user_screen.dart';
 import 'package:firebase_login_example/services/firebase_auth_services.dart';
 import 'package:firebase_login_example/services/local_storage.dart';
 import 'package:flutter/material.dart';

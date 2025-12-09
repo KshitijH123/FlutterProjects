@@ -1,5 +1,5 @@
-import 'package:firebase_login_example/data_screen.dart';
-import 'package:firebase_login_example/login_screen.dart';
+import 'package:firebase_login_example/screens/data_screen.dart';
+import 'package:firebase_login_example/screens/login_screen.dart';
 import 'package:firebase_login_example/services/local_storage.dart';
 import 'package:flutter/material.dart';
 
@@ -18,7 +18,7 @@ class _HomeScreenState extends State<HomeScreen> {
     return Scaffold(
       appBar: AppBar(
         title: Text(
-          'Login',
+          'Home',
           style: TextStyle(
             fontSize: 28,
             fontWeight: FontWeight.w500,
@@ -73,7 +73,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 MaterialPageRoute(builder: (context) => DataScreen()),
               );
             },
-            child: Text('data'),
+            child: Text('Data',style: TextStyle(fontSize: 18),),
           ),
         ],
       ),
@@ -118,7 +118,7 @@ class _HomeScreenState extends State<HomeScreen> {
             },
           );
         },
-        label: const Text('Logout ➜]'),
+        label: const Text('Logout ➜]',style: TextStyle(fontSize: 16),),
       ),
     );
   }
