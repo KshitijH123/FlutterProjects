@@ -38,8 +38,9 @@ class DataScreen extends StatelessWidget {
                   MaterialPageRoute(builder: (context) => CommentApiScreen()),
                 );
               },
-              child: Text('Comments'),
+              child: Text('Comments', style: TextStyle(fontSize: 18)),
             ),
+            SizedBox(height: 16),
             ElevatedButton(
               style: ElevatedButton.styleFrom(
                 backgroundColor: Colors.teal[200],
@@ -50,8 +51,9 @@ class DataScreen extends StatelessWidget {
                 ),
               ),
               onPressed: () {},
-              child: Text('Demo 1'),
+              child: Text('Demo 1', style: TextStyle(fontSize: 18)),
             ),
+            SizedBox(height: 16),
             ElevatedButton(
               style: ElevatedButton.styleFrom(
                 backgroundColor: Colors.teal[200],
@@ -62,8 +64,9 @@ class DataScreen extends StatelessWidget {
                 ),
               ),
               onPressed: () {},
-              child: Text('Demo 2'),
+              child: Text('Demo 2', style: TextStyle(fontSize: 18)),
             ),
+            SizedBox(height: 16),
             ElevatedButton(
               style: ElevatedButton.styleFrom(
                 backgroundColor: Colors.teal[200],
@@ -74,7 +77,7 @@ class DataScreen extends StatelessWidget {
                 ),
               ),
               onPressed: () {},
-              child: Text('Demo 3'),
+              child: Text('Demo 3', style: TextStyle(fontSize: 18)),
             ),
           ],
         ),
