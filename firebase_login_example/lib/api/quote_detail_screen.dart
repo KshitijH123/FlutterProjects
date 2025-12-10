@@ -14,6 +14,12 @@ class _QuoteDetailScreenState extends State<QuoteDetailScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        leading: GestureDetector(
+          onTap: () {
+            Navigator.pop(context);
+          },
+          child: Icon(Icons.arrow_back_ios, color: Colors.white),
+        ),
         title: Text(
           'Quote No: ${widget.quotes.id}',
           style: TextStyle(

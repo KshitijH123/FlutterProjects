@@ -23,6 +23,12 @@ class _CommentApiScreenState extends State<CommentApiScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        leading: GestureDetector(
+          onTap: () {
+            Navigator.pop(context);
+          },
+          child: Icon(Icons.arrow_back_ios, color: Colors.white),
+        ),
         title: Text(
           'Comments',
           style: TextStyle(
@@ -38,7 +44,12 @@ class _CommentApiScreenState extends State<CommentApiScreen> {
         future: commentFuture,
         builder: (context, snapshot) {
           if (snapshot.connectionState == ConnectionState.waiting) {
-            return Center(child: CircularProgressIndicator());
+            return Center(
+              child: CircularProgressIndicator(
+                backgroundColor: Colors.grey,
+                color: Colors.teal,
+              ),
+            );
           } else if (snapshot.hasError) {
             return Center(child: Text('Error: ${snapshot.error}'));
           } else if (!snapshot.hasData || snapshot.data!.isEmpty) {
@@ -57,7 +68,8 @@ class _CommentApiScreenState extends State<CommentApiScreen> {
                     Navigator.push(
                       context,
                       MaterialPageRoute(
-                        builder: (context) => CommentDetailScreen(comment: comment),
+                        builder: (context) =>
+                            CommentDetailScreen(comment: comment),
                       ),
                     );
                   },

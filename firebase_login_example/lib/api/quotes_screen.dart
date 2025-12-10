@@ -23,6 +23,12 @@ class _QuotesScreenState extends State<QuotesScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        leading: GestureDetector(
+          onTap: () {
+            Navigator.pop(context);
+          },
+          child: Icon(Icons.arrow_back_ios, color: Colors.white),
+        ),
         title: Text(
           'Quotes',
           style: TextStyle(
@@ -38,7 +44,12 @@ class _QuotesScreenState extends State<QuotesScreen> {
         future: quoteFuture,
         builder: (context, snapshot) {
           if (snapshot.connectionState == ConnectionState.waiting) {
-            return const Center(child: CircularProgressIndicator());
+            return const Center(
+              child: CircularProgressIndicator(
+                backgroundColor: Colors.grey,
+                color: Colors.teal,
+              ),
+            );
           } else if (snapshot.hasError) {
             return Center(child: Text('Error: ${snapshot.error}'));
           } else if (!snapshot.hasData || snapshot.data!.isEmpty) {
@@ -59,7 +70,8 @@ class _QuotesScreenState extends State<QuotesScreen> {
                       Navigator.push(
                         context,
                         MaterialPageRoute(
-                          builder: (context) => QuoteDetailScreen(quotes: quote,),
+                          builder: (context) =>
+                              QuoteDetailScreen(quotes: quote),
                         ),
                       );
                     },

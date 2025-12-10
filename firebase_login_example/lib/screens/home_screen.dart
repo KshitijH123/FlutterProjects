@@ -18,7 +18,6 @@ class _HomeScreenState extends State<HomeScreen> {
     return Scaffold(
       drawer: Drawer(
         width: 250,
-        
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
@@ -140,6 +139,9 @@ class _HomeScreenState extends State<HomeScreen> {
         ),
         centerTitle: true,
         backgroundColor: Colors.teal[400],
+        iconTheme: IconThemeData(
+          color: Colors.white
+        ),
       ),
       body: Column(
         mainAxisAlignment: MainAxisAlignment.center,
