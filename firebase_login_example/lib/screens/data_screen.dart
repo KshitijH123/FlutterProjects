@@ -1,4 +1,5 @@
 import 'package:firebase_login_example/api/comment_api_screen.dart';
+import 'package:firebase_login_example/api/products_screen.dart';
 import 'package:firebase_login_example/api/quotes_screen.dart';
 import 'package:flutter/material.dart';
 
@@ -9,7 +10,7 @@ class DataScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        leading: GestureDetector(
+        leading: InkWell(
           onTap: () {
             Navigator.pop(context);
           },
@@ -75,8 +76,13 @@ class DataScreen extends StatelessWidget {
                   borderRadius: BorderRadiusGeometry.circular(12),
                 ),
               ),
-              onPressed: () {},
-              child: Text('Demo 2', style: TextStyle(fontSize: 18)),
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => ProductsScreen()),
+                );
+              },
+              child: Text('Products', style: TextStyle(fontSize: 18)),
             ),
             SizedBox(height: 16),
             ElevatedButton(
