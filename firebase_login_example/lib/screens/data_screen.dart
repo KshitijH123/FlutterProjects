@@ -1,4 +1,5 @@
 import 'package:firebase_login_example/api/comment_api_screen.dart';
+import 'package:firebase_login_example/api/quotes_screen.dart';
 import 'package:flutter/material.dart';
 
 class DataScreen extends StatelessWidget {
@@ -50,8 +51,13 @@ class DataScreen extends StatelessWidget {
                   borderRadius: BorderRadiusGeometry.circular(12),
                 ),
               ),
-              onPressed: () {},
-              child: Text('Demo 1', style: TextStyle(fontSize: 18)),
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => QuotesScreen()),
+                );
+              },
+              child: Text('Quotes', style: TextStyle(fontSize: 18)),
             ),
             SizedBox(height: 16),
             ElevatedButton(
