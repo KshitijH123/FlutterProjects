@@ -1,4 +1,5 @@
 import 'package:firebase_login_example/api/comment_api_screen.dart';
+import 'package:firebase_login_example/api/posts_screen.dart';
 import 'package:firebase_login_example/api/products_screen.dart';
 import 'package:firebase_login_example/api/quotes_screen.dart';
 import 'package:flutter/material.dart';
@@ -94,8 +95,26 @@ class DataScreen extends StatelessWidget {
                   borderRadius: BorderRadiusGeometry.circular(12),
                 ),
               ),
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => PostsScreen()),
+                );
+              },
+              child: Text('Posts', style: TextStyle(fontSize: 18)),
+            ),
+            SizedBox(height: 16),
+            ElevatedButton(
+              style: ElevatedButton.styleFrom(
+                backgroundColor: Colors.teal[200],
+                foregroundColor: Colors.white,
+                minimumSize: Size(150, 40),
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadiusGeometry.circular(12),
+                ),
+              ),
               onPressed: () {},
-              child: Text('Demo 3', style: TextStyle(fontSize: 18)),
+              child: Text('Demo', style: TextStyle(fontSize: 18)),
             ),
           ],
         ),
