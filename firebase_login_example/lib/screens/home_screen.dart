@@ -192,49 +192,6 @@ class _HomeScreenState extends State<HomeScreen> {
           ),
         ],
       ),
-      floatingActionButton: FloatingActionButton.extended(
-        backgroundColor: Colors.teal[200],
-        foregroundColor: Colors.white,
-        onPressed: () {
-          showDialog(
-            context: context,
-            builder: (context) {
-              return AlertDialog(
-                title: Text(
-                  'Logout',
-                  style: TextStyle(fontWeight: FontWeight.w500),
-                ),
-                content: Text(
-                  'Are you sure you want to  logout?',
-                  style: TextStyle(fontSize: 16),
-                ),
-                actions: [
-                  TextButton(
-                    onPressed: () {
-                      Navigator.pop(context);
-                    },
-                    child: Text('Cancel'),
-                  ),
-                  TextButton(
-                    onPressed: () {
-                      Navigator.pop(context);
-                      Navigator.pushReplacement(
-                        context,
-                        MaterialPageRoute(builder: (context) => LoginScreen()),
-                      );
-                    },
-                    child: Text(
-                      'Logout',
-                      style: TextStyle(color: Colors.red[400]),
-                    ),
-                  ),
-                ],
-              );
-            },
-          );
-        },
-        label: const Text('Logout ➜]', style: TextStyle(fontSize: 16)),
-      ),
     );
   }
 }
