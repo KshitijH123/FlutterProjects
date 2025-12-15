@@ -1,13 +1,13 @@
-import 'package:firebase_login_example/api/comment_api_screen.dart';
-import 'package:firebase_login_example/api/posts_screen.dart';
-import 'package:firebase_login_example/api/products_screen.dart';
-import 'package:firebase_login_example/api/quotes_screen.dart';
-import 'package:firebase_login_example/api/recipes_screen.dart';
 import 'package:flutter/material.dart';
 
-class DataScreen extends StatelessWidget {
-  const DataScreen({super.key});
+class LogicDataScreen extends StatefulWidget {
+  const LogicDataScreen({super.key});
 
+  @override
+  State<LogicDataScreen> createState() => _LogicDataScreenState();
+}
+
+class _LogicDataScreenState extends State<LogicDataScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -19,7 +19,7 @@ class DataScreen extends StatelessWidget {
           child: Icon(Icons.arrow_back_ios, color: Colors.white),
         ),
         title: Text(
-          'Data Screen',
+          'Logic',
           style: TextStyle(
             fontSize: 28,
             fontWeight: FontWeight.w500,
@@ -42,13 +42,8 @@ class DataScreen extends StatelessWidget {
                   borderRadius: BorderRadiusGeometry.circular(12),
                 ),
               ),
-              onPressed: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (context) => CommentApiScreen()),
-                );
-              },
-              child: Text('Comments', style: TextStyle(fontSize: 18)),
+              onPressed: () {},
+              child: Text('Demo 1', style: TextStyle(fontSize: 18)),
             ),
             SizedBox(height: 16),
             ElevatedButton(
@@ -60,13 +55,8 @@ class DataScreen extends StatelessWidget {
                   borderRadius: BorderRadiusGeometry.circular(12),
                 ),
               ),
-              onPressed: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (context) => QuotesScreen()),
-                );
-              },
-              child: Text('Quotes', style: TextStyle(fontSize: 18)),
+              onPressed: () {},
+              child: Text('Demo 2', style: TextStyle(fontSize: 18)),
             ),
             SizedBox(height: 16),
             ElevatedButton(
@@ -78,13 +68,8 @@ class DataScreen extends StatelessWidget {
                   borderRadius: BorderRadiusGeometry.circular(12),
                 ),
               ),
-              onPressed: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (context) => ProductsScreen()),
-                );
-              },
-              child: Text('Products', style: TextStyle(fontSize: 18)),
+              onPressed: () {},
+              child: Text('Demo 3', style: TextStyle(fontSize: 18)),
             ),
             SizedBox(height: 16),
             ElevatedButton(
@@ -96,13 +81,8 @@ class DataScreen extends StatelessWidget {
                   borderRadius: BorderRadiusGeometry.circular(12),
                 ),
               ),
-              onPressed: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (context) => PostsScreen()),
-                );
-              },
-              child: Text('Posts', style: TextStyle(fontSize: 18)),
+              onPressed: () {},
+              child: Text('Demo 4', style: TextStyle(fontSize: 18)),
             ),
             SizedBox(height: 16),
             ElevatedButton(
@@ -114,13 +94,8 @@ class DataScreen extends StatelessWidget {
                   borderRadius: BorderRadiusGeometry.circular(12),
                 ),
               ),
-              onPressed: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (context) => RecipesScreen()),
-                );
-              },
-              child: Text('Recipes', style: TextStyle(fontSize: 18)),
+              onPressed: () {},
+              child: Text('Demo 5', style: TextStyle(fontSize: 18)),
             ),
           ],
         ),

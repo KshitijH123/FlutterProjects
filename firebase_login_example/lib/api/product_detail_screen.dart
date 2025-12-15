@@ -31,68 +31,70 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
         centerTitle: true,
         backgroundColor: Colors.teal[400],
       ),
-      body: Card(
-        margin: EdgeInsets.all(12),
-        color: Colors.teal[100],
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.start,
-          children: [
-            Padding(
-              padding: const EdgeInsets.all(16.0),
-              child: Image.network(
-                widget.product.image,
-                height: 250,
-                width: double.infinity,
-              ),
-            ),
-           Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 28, vertical: 14),
-              child: Text(
-                widget.product.title,
-                style: TextStyle(fontSize: 24, fontWeight: FontWeight.w500),
-              ),
-            ),
+      body: SingleChildScrollView(
+        child: Card(
+          margin: EdgeInsets.all(12),
+          color: Colors.teal[100],
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.start,
+            children: [
               Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 14),
-              child: Text(
-                '~${widget.product.description }',
-                style: TextStyle(fontSize: 16, fontWeight: FontWeight.w400),
+                padding: const EdgeInsets.all(16.0),
+                child: Image.network(
+                  widget.product.image,
+                  height: 250,
+                  width: double.infinity,
+                ),
               ),
-            ),
-             SizedBox(height: 8),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.start,
-              children: [
+             Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 28, vertical: 14),
+                child: Text(
+                  widget.product.title,
+                  style: TextStyle(fontSize: 24, fontWeight: FontWeight.w500),
+                ),
+              ),
                 Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 12),
-                  child: Text(
-                    '⭐ ${widget.product.rating.rate }',
-                    style: TextStyle(fontSize: 18, fontWeight: FontWeight.w600),
+                padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 14),
+                child: Text(
+                  '~${widget.product.description }',
+                  style: TextStyle(fontSize: 16, fontWeight: FontWeight.w400),
+                ),
+              ),
+               SizedBox(height: 8),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.start,
+                children: [
+                  Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 12),
+                    child: Text(
+                      '⭐ ${widget.product.rating.rate }',
+                      style: TextStyle(fontSize: 18, fontWeight: FontWeight.w600),
+                    ),
                   ),
-                ),
-                Text(
-                  '👤 ${widget.product.rating.count}',
-                  style: TextStyle(fontSize: 16, fontWeight: FontWeight.w500),
-                ),
-                Spacer(),
-                Row(
-                  children: [
-                    Padding(
-                      padding: const EdgeInsets.symmetric(horizontal: 16),
-                      child: Text(
-                        '₹ ${widget.product.price}',
-                        style: TextStyle(
-                          fontSize: 18,
-                          fontWeight: FontWeight.w600,
-                          color: Colors.grey[700],
+                  Text(
+                    '👤 ${widget.product.rating.count}',
+                    style: TextStyle(fontSize: 16, fontWeight: FontWeight.w500),
+                  ),
+                  Spacer(),
+                  Row(
+                    children: [
+                      Padding(
+                        padding: const EdgeInsets.symmetric(horizontal: 16),
+                        child: Text(
+                          '₹ ${widget.product.price}',
+                          style: TextStyle(
+                            fontSize: 18,
+                            fontWeight: FontWeight.w600,
+                            color: Colors.grey[700],
+                          ),
                         ),
                       ),
-                    ),
-                  ],
-                ),
-              ],
-            ),
-          ],
+                    ],
+                  ),
+                ],
+              ),
+            ],
+          ),
         ),
       ),
     );

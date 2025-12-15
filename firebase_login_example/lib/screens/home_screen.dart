@@ -1,4 +1,5 @@
 import 'package:firebase_login_example/screens/data_screen.dart';
+import 'package:firebase_login_example/screens/logic_data_screen.dart';
 import 'package:firebase_login_example/screens/login_screen.dart';
 import 'package:firebase_login_example/services/local_storage.dart';
 import 'package:flutter/material.dart';
@@ -39,7 +40,7 @@ class _HomeScreenState extends State<HomeScreen> {
                   SizedBox(height: 10),
                   Row(
                     children: [
-                      Icon(Icons.man,color: Colors.white,),
+                      Icon(Icons.man, color: Colors.white),
                       SizedBox(width: 4),
                       Text(
                         LocalStorage.instance.getUserName() ?? '',
@@ -57,21 +58,29 @@ class _HomeScreenState extends State<HomeScreen> {
                       SizedBox(width: 4),
                       Text(
                         LocalStorage.instance.getUserEmail() ?? '',
-                        style: TextStyle(
-                          fontSize: 16,
-                          color: Colors.white70
-                        ),
+                        style: TextStyle(fontSize: 16, color: Colors.white70),
                       ),
                     ],
                   ),
                 ],
-              ), 
+              ),
             ),
             ListTile(
               leading: Icon(Icons.home, color: Colors.teal[400]),
               title: Text("Home", style: TextStyle(fontSize: 16)),
               onTap: () {
                 Navigator.pop(context);
+              },
+            ),
+
+            ListTile(
+              leading: Icon(Icons.memory, color: Colors.teal[400]),
+              title: Text("Logic", style: TextStyle(fontSize: 16)),
+              onTap: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => LogicDataScreen()),
+                );
               },
             ),
 
@@ -139,9 +148,7 @@ class _HomeScreenState extends State<HomeScreen> {
         ),
         centerTitle: true,
         backgroundColor: Colors.teal[400],
-        iconTheme: IconThemeData(
-          color: Colors.white
-        ),
+        iconTheme: IconThemeData(color: Colors.white),
       ),
       body: Column(
         mainAxisAlignment: MainAxisAlignment.center,
