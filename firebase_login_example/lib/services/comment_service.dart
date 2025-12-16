@@ -11,10 +11,17 @@ class CommentService {
   static const String baseUrl = 'https://jsonplaceholder.typicode.com/comments';
 
   Future<List<CommentModel>> fetchComment() async {
-    final responce = await http.get(Uri.parse(baseUrl));
-
-    if (responce.statusCode == 200) {
-      final List<dynamic> json = jsonDecode(responce.body);
+      final response = await http
+        .get(
+          Uri.parse(baseUrl),
+          headers: {
+            'Content-Type': 'application/json',
+            'Accept': 'application/json',
+          },
+        )
+        .timeout(const Duration(seconds: 10));
+    if (response.statusCode == 200) {
+      final List<dynamic> json = jsonDecode(response.body);
       return json.map((json) => CommentModel.fromJson(json)).toList();
     } else {
       return [];

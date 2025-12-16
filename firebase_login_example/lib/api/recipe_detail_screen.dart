@@ -13,6 +13,7 @@ class _RecipeDetailScreenState extends State<RecipeDetailScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.white,
       appBar: AppBar(
         leading: InkWell(
           onTap: () {
@@ -111,7 +112,7 @@ class _RecipeDetailScreenState extends State<RecipeDetailScreen> {
                       Column(
                         children: [
                           const Icon(
-                            Icons.local_fire_department,
+                            Icons.soup_kitchen,
                             color: Colors.teal,
                           ),
                           SizedBox(height: 4),
@@ -145,7 +146,7 @@ class _RecipeDetailScreenState extends State<RecipeDetailScreen> {
                   if (widget.recipe.caloriesPerServing != null)
                     Row(
                       children: [
-                        Icon(Icons.local_fire_department, color: Colors.red),
+                        Icon(Icons.local_fire_department_sharp, color: Colors.red[400]),
                         const SizedBox(width: 6),
                         Text(
                           '${widget.recipe.caloriesPerServing} Kcal per serving',
@@ -197,7 +198,7 @@ class _RecipeDetailScreenState extends State<RecipeDetailScreen> {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           CircleAvatar(
-                            radius: 12,
+                            radius: 10,
                             backgroundColor: Colors.teal,
                             child: Text(
                               '${entry.key + 1}',

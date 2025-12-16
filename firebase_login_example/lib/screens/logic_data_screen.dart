@@ -1,3 +1,5 @@
+import 'package:firebase_login_example/logic/area_of_rectangle.dart';
+import 'package:firebase_login_example/logic/area_of_triangle.dart';
 import 'package:flutter/material.dart';
 
 class LogicDataScreen extends StatefulWidget {
@@ -42,8 +44,13 @@ class _LogicDataScreenState extends State<LogicDataScreen> {
                   borderRadius: BorderRadiusGeometry.circular(12),
                 ),
               ),
-              onPressed: () {},
-              child: Text('Demo 1', style: TextStyle(fontSize: 18)),
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => AreaOfTriangle()),
+                );
+              },
+              child: Text('Area Of Triangle', style: TextStyle(fontSize: 18)),
             ),
             SizedBox(height: 16),
             ElevatedButton(
@@ -55,8 +62,13 @@ class _LogicDataScreenState extends State<LogicDataScreen> {
                   borderRadius: BorderRadiusGeometry.circular(12),
                 ),
               ),
-              onPressed: () {},
-              child: Text('Demo 2', style: TextStyle(fontSize: 18)),
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => AreaOfRectangle()),
+                );
+              },
+              child: Text('Area Of Rectangle', style: TextStyle(fontSize: 18)),
             ),
             SizedBox(height: 16),
             ElevatedButton(
