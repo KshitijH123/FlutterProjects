@@ -1,4 +1,4 @@
-import 'package:firebase_login_example/api/product_detail_screen.dart';
+import 'package:firebase_login_example/api/product_example/product_detail_screen.dart';
 import 'package:firebase_login_example/model/products_model.dart';
 import 'package:firebase_login_example/services/product_service.dart';
 import 'package:flutter/material.dart';

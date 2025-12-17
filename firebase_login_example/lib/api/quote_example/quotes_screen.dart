@@ -1,4 +1,4 @@
-import 'package:firebase_login_example/api/quote_detail_screen.dart';
+import 'package:firebase_login_example/api/quote_example/quote_detail_screen.dart';
 import 'package:firebase_login_example/model/quotes_model.dart';
 import 'package:firebase_login_example/services/quotes_services.dart';
 import 'package:flutter/material.dart';

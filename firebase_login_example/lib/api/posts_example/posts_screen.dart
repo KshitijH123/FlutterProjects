@@ -1,4 +1,4 @@
-import 'package:firebase_login_example/api/post_detail_screen.dart';
+import 'package:firebase_login_example/api/posts_example/post_detail_screen.dart';
 import 'package:firebase_login_example/model/posts_model.dart';
 import 'package:firebase_login_example/services/posts_service.dart';
 import 'package:flutter/material.dart';

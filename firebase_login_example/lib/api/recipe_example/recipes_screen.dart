@@ -1,4 +1,4 @@
-import 'package:firebase_login_example/api/recipe_detail_screen.dart';
+import 'package:firebase_login_example/api/recipe_example/recipe_detail_screen.dart';
 import 'package:firebase_login_example/model/recipes_model.dart';
 import 'package:firebase_login_example/services/recipe_service.dart';
 import 'package:flutter/material.dart';

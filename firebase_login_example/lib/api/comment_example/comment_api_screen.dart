@@ -1,5 +1,5 @@
 import 'package:firebase_login_example/model/comment_model.dart';
-import 'package:firebase_login_example/api/comment_detail_screen.dart';
+import 'package:firebase_login_example/api/comment_example/comment_detail_screen.dart';
 import 'package:firebase_login_example/services/comment_service.dart';
 import 'package:flutter/material.dart';
 

@@ -1,5 +1,7 @@
 import 'package:firebase_login_example/logic/area_of_rectangle.dart';
 import 'package:firebase_login_example/logic/area_of_triangle.dart';
+import 'package:firebase_login_example/logic/clock_screen.dart';
+import 'package:firebase_login_example/logic/todo%20example/todo_screen.dart';
 import 'package:flutter/material.dart';
 
 class LogicDataScreen extends StatefulWidget {
@@ -80,8 +82,13 @@ class _LogicDataScreenState extends State<LogicDataScreen> {
                   borderRadius: BorderRadiusGeometry.circular(12),
                 ),
               ),
-              onPressed: () {},
-              child: Text('Demo 3', style: TextStyle(fontSize: 18)),
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => ClockScreen()),
+                );
+              },
+              child: Text('Clock Example', style: TextStyle(fontSize: 18)),
             ),
             SizedBox(height: 16),
             ElevatedButton(
@@ -93,8 +100,13 @@ class _LogicDataScreenState extends State<LogicDataScreen> {
                   borderRadius: BorderRadiusGeometry.circular(12),
                 ),
               ),
-              onPressed: () {},
-              child: Text('Demo 4', style: TextStyle(fontSize: 18)),
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => TodoScreen()),
+                );
+              },
+              child: Text('Todo Example', style: TextStyle(fontSize: 18)),
             ),
             SizedBox(height: 16),
             ElevatedButton(
