@@ -3,6 +3,7 @@ import 'package:firebase_login_example/api/posts_example/posts_screen.dart';
 import 'package:firebase_login_example/api/product_example/products_screen.dart';
 import 'package:firebase_login_example/api/quote_example/quotes_screen.dart';
 import 'package:firebase_login_example/api/recipe_example/recipes_screen.dart';
+import 'package:firebase_login_example/api/restaurant_example/restaurant_screen.dart';
 import 'package:flutter/material.dart';
 
 class DataScreen extends StatelessWidget {
@@ -121,6 +122,24 @@ class DataScreen extends StatelessWidget {
                 );
               },
               child: Text('Recipes', style: TextStyle(fontSize: 18)),
+            ),
+            SizedBox(height: 16),
+            ElevatedButton(
+              style: ElevatedButton.styleFrom(
+                backgroundColor: Colors.teal[200],
+                foregroundColor: Colors.white,
+                minimumSize: Size(150, 40),
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadiusGeometry.circular(12),
+                ),
+              ),
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => RestaurantScreen()),
+                );
+              },
+              child: Text('Restaurant', style: TextStyle(fontSize: 18)),
             ),
           ],
         ),
