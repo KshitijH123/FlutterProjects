@@ -1,6 +1,7 @@
 import 'package:firebase_login_example/logic/area_of_rectangle.dart';
 import 'package:firebase_login_example/logic/area_of_triangle.dart';
 import 'package:firebase_login_example/logic/clock_screen.dart';
+import 'package:firebase_login_example/logic/map_screen.dart';
 import 'package:firebase_login_example/logic/todo%20example/todo_screen.dart';
 import 'package:flutter/material.dart';
 
@@ -118,8 +119,13 @@ class _LogicDataScreenState extends State<LogicDataScreen> {
                   borderRadius: BorderRadiusGeometry.circular(12),
                 ),
               ),
-              onPressed: () {},
-              child: Text('Demo 5', style: TextStyle(fontSize: 18)),
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => MapScreen()),
+                );
+              },
+              child: Text('Google Map', style: TextStyle(fontSize: 18)),
             ),
           ],
         ),

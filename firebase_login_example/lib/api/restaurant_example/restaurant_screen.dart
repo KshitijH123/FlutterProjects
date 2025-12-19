@@ -1,3 +1,4 @@
+import 'package:firebase_login_example/api/restaurant_example/restaurant_detail_screen.dart';
 import 'package:firebase_login_example/model/restaurant_model.dart';
 import 'package:firebase_login_example/services/restaurant_service.dart';
 import 'package:flutter/material.dart';
@@ -121,7 +122,15 @@ class _RestaurantScreenState extends State<RestaurantScreen> {
                                       borderRadius: BorderRadius.circular(8),
                                     ),
                                   ),
-                                  onPressed: () {},
+                                  onPressed: () {
+                                    Navigator.push(
+                                      context,
+                                      MaterialPageRoute(
+                                        builder: (context) =>
+                                            RestaurantDetailScreen(),
+                                      ),
+                                    );
+                                  },
                                   child: const Text(
                                     'View Detail',
                                     style: TextStyle(color: Colors.white),
