@@ -2,6 +2,7 @@ import 'package:firebase_login_example/screens/data_screen.dart';
 import 'package:firebase_login_example/screens/logic_data_screen.dart';
 import 'package:firebase_login_example/screens/login_screen.dart';
 import 'package:firebase_login_example/services/local_storage.dart';
+import 'package:firebase_login_example/ui/practice_ui_screen.dart';
 import 'package:flutter/material.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -74,12 +75,23 @@ class _HomeScreenState extends State<HomeScreen> {
             ),
 
             ListTile(
-              leading: Icon(Icons.memory, color: Colors.teal[400]),
+              leading: Icon(Icons.lightbulb, color: Colors.teal[400]),
               title: Text("Logic", style: TextStyle(fontSize: 16)),
               onTap: () {
                 Navigator.push(
                   context,
                   MaterialPageRoute(builder: (context) => LogicDataScreen()),
+                );
+              },
+            ),
+
+            ListTile(
+              leading: Icon(Icons.memory, color: Colors.teal[400]),
+              title: Text("Practice/UI", style: TextStyle(fontSize: 16)),
+              onTap: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => PracticeUiScreen()),
                 );
               },
             ),
