@@ -29,7 +29,7 @@ class _RestaurantScreenState extends State<RestaurantScreen> {
           onPressed: () => Navigator.pop(context),
         ),
         title: const Text(
-          'Recipes',
+          'Restaurant',
           style: TextStyle(
             fontSize: 26,
             fontWeight: FontWeight.w600,
@@ -116,7 +116,7 @@ class _RestaurantScreenState extends State<RestaurantScreen> {
                                 const SizedBox(height: 12),
                                 ElevatedButton(
                                   style: ElevatedButton.styleFrom(
-                                    backgroundColor: Colors.grey,
+                                    backgroundColor: Colors.grey[400],
                                     elevation: 0,
                                     shape: RoundedRectangleBorder(
                                       borderRadius: BorderRadius.circular(8),
@@ -127,7 +127,9 @@ class _RestaurantScreenState extends State<RestaurantScreen> {
                                       context,
                                       MaterialPageRoute(
                                         builder: (context) =>
-                                            RestaurantDetailScreen(),
+                                            RestaurantDetailScreen(
+                                              restaurant: restaurant,
+                                            ),
                                       ),
                                     );
                                   },
