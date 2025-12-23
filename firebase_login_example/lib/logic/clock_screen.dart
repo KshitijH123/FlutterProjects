@@ -19,7 +19,7 @@ class _ClockScreenState extends State<ClockScreen> {
           child: Icon(Icons.arrow_back_ios, color: Colors.white),
         ),
         title: Text(
-          'Area Of Triangle',
+          'Clock',
           style: TextStyle(
             fontSize: 28,
             fontWeight: FontWeight.w500,
