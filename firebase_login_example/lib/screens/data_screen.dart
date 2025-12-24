@@ -1,5 +1,5 @@
 import 'package:firebase_login_example/api/comment_example/comment_api_screen.dart';
-import 'package:firebase_login_example/api/posts_example/posts_screen.dart';
+import 'package:firebase_login_example/firebase/posts_example/posts_screen.dart';
 import 'package:firebase_login_example/api/product_example/products_screen.dart';
 import 'package:firebase_login_example/api/quote_example/quotes_screen.dart';
 import 'package:firebase_login_example/api/recipe_example/recipes_screen.dart';
