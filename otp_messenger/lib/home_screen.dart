@@ -1,5 +1,6 @@
 import 'package:another_telephony/telephony.dart';
 import 'package:firebase_database/firebase_database.dart';
+import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
 import 'package:otp_messenger/sms_detail_screen.dart';
 
@@ -13,13 +14,29 @@ class HomeScreen extends StatefulWidget {
 class _HomeScreenState extends State<HomeScreen> {
   Future<List<SmsMessage>>? futureMessages;
   int selectedIndex = 0;
-  bool isPushing = false; 
+  bool isPushing = false;
 
   @override
   void initState() {
     super.initState();
     futureMessages = getAllMesseges();
     listenForNewSMS();
+
+    setupFCM();
+  }
+
+  void setupFCM() async {
+    FirebaseMessaging messaging = FirebaseMessaging.instance;
+
+    await messaging.requestPermission(alert: true, badge: true, sound: true);
+
+    await messaging.subscribeToTopic('otp_users');
+
+    FirebaseMessaging.onMessage.listen((RemoteMessage message) {
+      debugPrint('FCM Foreground Message Received');
+      debugPrint('Title: ${message.notification?.title}');
+      debugPrint('Body: ${message.notification?.body}');
+    });
   }
 
   void listenForNewSMS() {
@@ -88,7 +105,7 @@ class _HomeScreenState extends State<HomeScreen> {
       setState(() {
         isPushing = false;
       });
-      
+
       return;
     }
 
@@ -154,7 +171,7 @@ class _HomeScreenState extends State<HomeScreen> {
     return Scaffold(
       appBar: AppBar(
         title: const Text(
-          'Inbox',
+          'Messages',
           style: TextStyle(fontSize: 28, fontWeight: FontWeight.w500),
         ),
         elevation: 4,
