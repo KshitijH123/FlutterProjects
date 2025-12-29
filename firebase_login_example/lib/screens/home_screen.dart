@@ -97,8 +97,8 @@ class _HomeScreenState extends State<HomeScreen> {
             ),
 
             ListTile(
-              leading: Icon(Icons.data_usage, color: Colors.teal[400]),
-              title: Text("Data", style: TextStyle(fontSize: 16)),
+              leading: Icon(Icons.api, color: Colors.teal[400]),
+              title: Text("API", style: TextStyle(fontSize: 16)),
               onTap: () {
                 Navigator.pop(context);
                 Navigator.push(
@@ -207,7 +207,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 MaterialPageRoute(builder: (context) => DataScreen()),
               );
             },
-            child: Text('Data', style: TextStyle(fontSize: 18)),
+            child: Text('Api', style: TextStyle(fontSize: 18)),
           ),
         ],
       ),

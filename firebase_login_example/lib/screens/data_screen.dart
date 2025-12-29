@@ -20,7 +20,7 @@ class DataScreen extends StatelessWidget {
           child: Icon(Icons.arrow_back_ios, color: Colors.white),
         ),
         title: Text(
-          'Data Screen',
+          'API Screen',
           style: TextStyle(
             fontSize: 28,
             fontWeight: FontWeight.w500,
