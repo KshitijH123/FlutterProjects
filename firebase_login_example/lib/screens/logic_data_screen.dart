@@ -37,138 +37,140 @@ class _LogicDataScreenState extends State<LogicDataScreen> {
         backgroundColor: Colors.teal[400],
       ),
       body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            ElevatedButton(
-              style: ElevatedButton.styleFrom(
-                backgroundColor: Colors.teal[200],
-                foregroundColor: Colors.white,
-                minimumSize: Size(150, 40),
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadiusGeometry.circular(12),
+        child: SingleChildScrollView(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              ElevatedButton(
+                style: ElevatedButton.styleFrom(
+                  backgroundColor: Colors.teal[200],
+                  foregroundColor: Colors.white,
+                  minimumSize: Size(150, 40),
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadiusGeometry.circular(12),
+                  ),
+                ),
+                onPressed: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => AreaOfTriangle()),
+                  );
+                },
+                child: Text('Area Of Triangle', style: TextStyle(fontSize: 18)),
+              ),
+              SizedBox(height: 16),
+              ElevatedButton(
+                style: ElevatedButton.styleFrom(
+                  backgroundColor: Colors.teal[200],
+                  foregroundColor: Colors.white,
+                  minimumSize: Size(150, 40),
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadiusGeometry.circular(12),
+                  ),
+                ),
+                onPressed: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => AreaOfRectangle()),
+                  );
+                },
+                child: Text('Area Of Rectangle', style: TextStyle(fontSize: 18)),
+              ),
+              SizedBox(height: 16),
+              ElevatedButton(
+                style: ElevatedButton.styleFrom(
+                  backgroundColor: Colors.teal[200],
+                  foregroundColor: Colors.white,
+                  minimumSize: Size(150, 40),
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadiusGeometry.circular(12),
+                  ),
+                ),
+                onPressed: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => ClockScreen()),
+                  );
+                },
+                child: Text('Clock Example', style: TextStyle(fontSize: 18)),
+              ),
+              SizedBox(height: 16),
+              ElevatedButton(
+                style: ElevatedButton.styleFrom(
+                  backgroundColor: Colors.teal[200],
+                  foregroundColor: Colors.white,
+                  minimumSize: Size(150, 40),
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadiusGeometry.circular(12),
+                  ),
+                ),
+                onPressed: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => TodoScreen()),
+                  );
+                },
+                child: Text('Todo Example', style: TextStyle(fontSize: 18)),
+              ),
+              SizedBox(height: 16),
+              ElevatedButton(
+                style: ElevatedButton.styleFrom(
+                  backgroundColor: Colors.teal[200],
+                  foregroundColor: Colors.white,
+                  minimumSize: Size(150, 40),
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadiusGeometry.circular(12),
+                  ),
+                ),
+                onPressed: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => MapScreen()),
+                  );
+                },
+                child: Text('Google Map', style: TextStyle(fontSize: 18)),
+              ),
+               SizedBox(height: 16),
+              ElevatedButton(
+                style: ElevatedButton.styleFrom(
+                  backgroundColor: Colors.teal[200],
+                  foregroundColor: Colors.white,
+                  minimumSize: Size(150, 40),
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadiusGeometry.circular(12),
+                  ),
+                ),
+                onPressed: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => Page1()),
+                  );
+                },
+                child: Text('Navigation Using Provider', style: TextStyle(fontSize: 18)),
+              ),
+               SizedBox(height: 16),
+              ElevatedButton(
+                style: ElevatedButton.styleFrom(
+                  backgroundColor: Colors.teal[200],
+                  foregroundColor: Colors.white,
+                  minimumSize: Size(150, 40),
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadiusGeometry.circular(12),
+                  ),
+                ),
+                onPressed: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => FirstScreen()),
+                  );
+                },
+                child: Text(
+                  'Navigation data',
+                  style: TextStyle(fontSize: 18),
                 ),
               ),
-              onPressed: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (context) => AreaOfTriangle()),
-                );
-              },
-              child: Text('Area Of Triangle', style: TextStyle(fontSize: 18)),
-            ),
-            SizedBox(height: 16),
-            ElevatedButton(
-              style: ElevatedButton.styleFrom(
-                backgroundColor: Colors.teal[200],
-                foregroundColor: Colors.white,
-                minimumSize: Size(150, 40),
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadiusGeometry.circular(12),
-                ),
-              ),
-              onPressed: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (context) => AreaOfRectangle()),
-                );
-              },
-              child: Text('Area Of Rectangle', style: TextStyle(fontSize: 18)),
-            ),
-            SizedBox(height: 16),
-            ElevatedButton(
-              style: ElevatedButton.styleFrom(
-                backgroundColor: Colors.teal[200],
-                foregroundColor: Colors.white,
-                minimumSize: Size(150, 40),
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadiusGeometry.circular(12),
-                ),
-              ),
-              onPressed: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (context) => ClockScreen()),
-                );
-              },
-              child: Text('Clock Example', style: TextStyle(fontSize: 18)),
-            ),
-            SizedBox(height: 16),
-            ElevatedButton(
-              style: ElevatedButton.styleFrom(
-                backgroundColor: Colors.teal[200],
-                foregroundColor: Colors.white,
-                minimumSize: Size(150, 40),
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadiusGeometry.circular(12),
-                ),
-              ),
-              onPressed: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (context) => TodoScreen()),
-                );
-              },
-              child: Text('Todo Example', style: TextStyle(fontSize: 18)),
-            ),
-            SizedBox(height: 16),
-            ElevatedButton(
-              style: ElevatedButton.styleFrom(
-                backgroundColor: Colors.teal[200],
-                foregroundColor: Colors.white,
-                minimumSize: Size(150, 40),
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadiusGeometry.circular(12),
-                ),
-              ),
-              onPressed: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (context) => MapScreen()),
-                );
-              },
-              child: Text('Google Map', style: TextStyle(fontSize: 18)),
-            ),
-             SizedBox(height: 16),
-            ElevatedButton(
-              style: ElevatedButton.styleFrom(
-                backgroundColor: Colors.teal[200],
-                foregroundColor: Colors.white,
-                minimumSize: Size(150, 40),
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadiusGeometry.circular(12),
-                ),
-              ),
-              onPressed: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (context) => Page1()),
-                );
-              },
-              child: Text('Navigation Using Provider', style: TextStyle(fontSize: 18)),
-            ),
-             SizedBox(height: 16),
-            ElevatedButton(
-              style: ElevatedButton.styleFrom(
-                backgroundColor: Colors.teal[200],
-                foregroundColor: Colors.white,
-                minimumSize: Size(150, 40),
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadiusGeometry.circular(12),
-                ),
-              ),
-              onPressed: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (context) => FirstScreen()),
-                );
-              },
-              child: Text(
-                'Navigation data',
-                style: TextStyle(fontSize: 18),
-              ),
-            ),
-          ],
+            ],
+          ),
         ),
       ),
     );

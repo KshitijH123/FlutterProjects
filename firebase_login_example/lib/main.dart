@@ -26,8 +26,9 @@ class MyApp extends StatelessWidget {
         future: LocalStorage.instance.isUserLoggedIn(),
         builder: (context, snapshot) {
           final isUserLoggedIn = snapshot.data;
-
-          return isUserLoggedIn == true ? HomeScreen(name: '', email: '',) : LoginScreen();
+          return isUserLoggedIn == true
+              ? HomeScreen(name: '', email: '')
+              : LoginScreen();
         },
       ),
       debugShowCheckedModeBanner: false,

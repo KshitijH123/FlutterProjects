@@ -1,4 +1,5 @@
 import 'package:firebase_login_example/api/comment_example/comment_api_screen.dart';
+import 'package:firebase_login_example/api/employee/employee_login.dart';
 import 'package:firebase_login_example/api/profile_screen.dart';
 import 'package:firebase_login_example/firebase/posts_example/posts_screen.dart';
 import 'package:firebase_login_example/api/product_example/products_screen.dart';
@@ -32,135 +33,155 @@ class DataScreen extends StatelessWidget {
         backgroundColor: Colors.teal[400],
       ),
       body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            ElevatedButton(
-              style: ElevatedButton.styleFrom(
-                backgroundColor: Colors.teal[200],
-                foregroundColor: Colors.white,
-                minimumSize: Size(150, 40),
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadiusGeometry.circular(12),
+        child: SingleChildScrollView(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              ElevatedButton(
+                style: ElevatedButton.styleFrom(
+                  backgroundColor: Colors.teal[200],
+                  foregroundColor: Colors.white,
+                  minimumSize: Size(150, 40),
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadiusGeometry.circular(12),
+                  ),
                 ),
+                onPressed: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => CommentApiScreen()),
+                  );
+                },
+                child: Text('Comments', style: TextStyle(fontSize: 18)),
               ),
-              onPressed: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (context) => CommentApiScreen()),
-                );
-              },
-              child: Text('Comments', style: TextStyle(fontSize: 18)),
-            ),
-            SizedBox(height: 16),
-            ElevatedButton(
-              style: ElevatedButton.styleFrom(
-                backgroundColor: Colors.teal[200],
-                foregroundColor: Colors.white,
-                minimumSize: Size(150, 40),
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadiusGeometry.circular(12),
+              SizedBox(height: 16),
+              ElevatedButton(
+                style: ElevatedButton.styleFrom(
+                  backgroundColor: Colors.teal[200],
+                  foregroundColor: Colors.white,
+                  minimumSize: Size(150, 40),
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadiusGeometry.circular(12),
+                  ),
                 ),
+                onPressed: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => QuotesScreen()),
+                  );
+                },
+                child: Text('Quotes', style: TextStyle(fontSize: 18)),
               ),
-              onPressed: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (context) => QuotesScreen()),
-                );
-              },
-              child: Text('Quotes', style: TextStyle(fontSize: 18)),
-            ),
-            SizedBox(height: 16),
-            ElevatedButton(
-              style: ElevatedButton.styleFrom(
-                backgroundColor: Colors.teal[200],
-                foregroundColor: Colors.white,
-                minimumSize: Size(150, 40),
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadiusGeometry.circular(12),
+              SizedBox(height: 16),
+              ElevatedButton(
+                style: ElevatedButton.styleFrom(
+                  backgroundColor: Colors.teal[200],
+                  foregroundColor: Colors.white,
+                  minimumSize: Size(150, 40),
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadiusGeometry.circular(12),
+                  ),
                 ),
+                onPressed: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => ProductsScreen()),
+                  );
+                },
+                child: Text('Products', style: TextStyle(fontSize: 18)),
               ),
-              onPressed: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (context) => ProductsScreen()),
-                );
-              },
-              child: Text('Products', style: TextStyle(fontSize: 18)),
-            ),
-            SizedBox(height: 16),
-            ElevatedButton(
-              style: ElevatedButton.styleFrom(
-                backgroundColor: Colors.teal[200],
-                foregroundColor: Colors.white,
-                minimumSize: Size(150, 40),
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadiusGeometry.circular(12),
+              SizedBox(height: 16),
+              ElevatedButton(
+                style: ElevatedButton.styleFrom(
+                  backgroundColor: Colors.teal[200],
+                  foregroundColor: Colors.white,
+                  minimumSize: Size(150, 40),
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadiusGeometry.circular(12),
+                  ),
                 ),
+                onPressed: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => PostsScreen()),
+                  );
+                },
+                child: Text('Posts', style: TextStyle(fontSize: 18)),
               ),
-              onPressed: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (context) => PostsScreen()),
-                );
-              },
-              child: Text('Posts', style: TextStyle(fontSize: 18)),
-            ),
-            SizedBox(height: 16),
-            ElevatedButton(
-              style: ElevatedButton.styleFrom(
-                backgroundColor: Colors.teal[200],
-                foregroundColor: Colors.white,
-                minimumSize: Size(150, 40),
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadiusGeometry.circular(12),
+              SizedBox(height: 16),
+              ElevatedButton(
+                style: ElevatedButton.styleFrom(
+                  backgroundColor: Colors.teal[200],
+                  foregroundColor: Colors.white,
+                  minimumSize: Size(150, 40),
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadiusGeometry.circular(12),
+                  ),
                 ),
+                onPressed: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => RecipesScreen()),
+                  );
+                },
+                child: Text('Recipes', style: TextStyle(fontSize: 18)),
               ),
-              onPressed: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (context) => RecipesScreen()),
-                );
-              },
-              child: Text('Recipes', style: TextStyle(fontSize: 18)),
-            ),
-            SizedBox(height: 16),
-            ElevatedButton(
-              style: ElevatedButton.styleFrom(
-                backgroundColor: Colors.teal[200],
-                foregroundColor: Colors.white,
-                minimumSize: Size(150, 40),
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadiusGeometry.circular(12),
+              SizedBox(height: 16),
+              ElevatedButton(
+                style: ElevatedButton.styleFrom(
+                  backgroundColor: Colors.teal[200],
+                  foregroundColor: Colors.white,
+                  minimumSize: Size(150, 40),
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadiusGeometry.circular(12),
+                  ),
                 ),
+                onPressed: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => RestaurantScreen()),
+                  );
+                },
+                child: Text('Restaurant', style: TextStyle(fontSize: 18)),
               ),
-              onPressed: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (context) => RestaurantScreen()),
-                );
-              },
-              child: Text('Restaurant', style: TextStyle(fontSize: 18)),
-            ),
-            SizedBox(height: 16),
-            ElevatedButton(
-              style: ElevatedButton.styleFrom(
-                backgroundColor: Colors.teal[200],
-                foregroundColor: Colors.white,
-                minimumSize: Size(150, 40),
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadiusGeometry.circular(12),
+              SizedBox(height: 16),
+              ElevatedButton(
+                style: ElevatedButton.styleFrom(
+                  backgroundColor: Colors.teal[200],
+                  foregroundColor: Colors.white,
+                  minimumSize: Size(150, 40),
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadiusGeometry.circular(12),
+                  ),
                 ),
+                onPressed: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => ProfileScreen()),
+                  );
+                },
+                child: Text('Profile', style: TextStyle(fontSize: 18)),
               ),
-              onPressed: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (context) => ProfileScreen()),
-                );
-              },
-              child: Text('Profile', style: TextStyle(fontSize: 18)),
-            ),
-          ],
+               SizedBox(height: 16),
+              ElevatedButton(
+                style: ElevatedButton.styleFrom(
+                  backgroundColor: Colors.teal[200],
+                  foregroundColor: Colors.white,
+                  minimumSize: Size(150, 40),
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadiusGeometry.circular(12),
+                  ),
+                ),
+                onPressed: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => EmployeeLogin()),
+                  );
+                },
+                child: Text('Employee', style: TextStyle(fontSize: 18)),
+              ),
+            ],
+          ),
         ),
       ),
     );
