@@ -1,6 +1,7 @@
 import 'package:firebase_login_example/api/comment_example/comment_api_screen.dart';
 import 'package:firebase_login_example/api/employee/employee_login.dart';
-import 'package:firebase_login_example/api/profile_screen.dart';
+import 'package:firebase_login_example/api/profile/profile_screen.dart';
+import 'package:firebase_login_example/api/todos/todos_screen.dart';
 import 'package:firebase_login_example/firebase/posts_example/posts_screen.dart';
 import 'package:firebase_login_example/api/product_example/products_screen.dart';
 import 'package:firebase_login_example/api/quote_example/quotes_screen.dart';
@@ -179,6 +180,24 @@ class DataScreen extends StatelessWidget {
                   );
                 },
                 child: Text('Employee', style: TextStyle(fontSize: 18)),
+              ),
+              SizedBox(height: 16),
+              ElevatedButton(
+                style: ElevatedButton.styleFrom(
+                  backgroundColor: Colors.teal[200],
+                  foregroundColor: Colors.white,
+                  minimumSize: Size(150, 40),
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadiusGeometry.circular(12),
+                  ),
+                ),
+                onPressed: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => TodosScreen()),
+                  );
+                },
+                child: Text('Todos', style: TextStyle(fontSize: 18)),
               ),
             ],
           ),
